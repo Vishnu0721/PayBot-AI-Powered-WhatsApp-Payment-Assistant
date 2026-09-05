@@ -1,0 +1,28 @@
+{
+  "name": "paybot-backend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/index.js",
+    "start": "node src/index.js",
+    "db:local": "node scripts/start-local-mongo.js",
+    "live:l0": "node scripts/live-l0-check.js",
+    "live:check": "node scripts/live-check.js",
+    "live:enable": "node scripts/live-enable.js",
+    "live:setup": "node scripts/live-setup.js",
+    "tunnel": "cloudflared tunnel --url http://127.0.0.1:3000",
+    "test": "node --test src/services/parser.test.js src/services/razorpayWebhook.test.js src/services/payments.idempotency.test.js src/services/whatsappSignature.test.js src/utils/secrets.test.js src/utils/billing.test.js src/config/liveReadiness.test.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.5",
+    "mongodb-memory-server": "^10.1.4",
+    "razorpay": "^2.9.6"
+  }
+}
